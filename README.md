@@ -41,14 +41,15 @@ Gana quien se acerque más a 21 sin pasarse.
 ├── index.html               # Página principal e interfaz
 ├── src/
 │   ├── main.js              # Punto de entrada
-│   ├── style.css            # Estilos del juego
+│   ├── styles.css           # Estilos del juego
 │   └── blackjack/
 │       ├── index.js         # Inicialización y eventos del juego
 │       └── usecases/
 │           ├── create-deck.js    # Creación y mezcla de la baraja
 │           ├── card-cases.js     # Obtener carta, dibujar y valor
 │           ├── computer-turn.js  # Turno de la computadora
-│           └── handle-cases.js   # Acciones de nueva partida, pedir y plantar
+│           ├── handle-cases.js   # Acciones de nueva partida, pedir y plantar
+│           └── ui.js             # Marcador, banner de resultado y estados
 └── public/assets/cards/     # Imágenes de las cartas
 ```
 
@@ -56,4 +57,4 @@ Gana quien se acerque más a 21 sin pasarse.
 
 - JavaScript (ES Modules)
 - Vite
-- Bootstrap 4
+- CSS moderno (variables, grid/flexbox, animaciones)

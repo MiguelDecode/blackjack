@@ -3,43 +3,72 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-      crossorigin="anonymous"
+    <meta name="theme-color" content="#072a20" />
+    <meta
+      name="description"
+      content="A classic casino-style Blackjack game built with vanilla JavaScript and Vite."
     />
-
-    <title>03-vite-app</title>
-    <script type="module" crossorigin src="/blackjack/assets/index-1TBq8mKB.js"></script>
-    <link rel="stylesheet" crossorigin href="/blackjack/assets/index-CxOOdV5-.css">
+    <title>Blackjack · 21</title>
+    <script type="module" crossorigin src="/blackjack/assets/index-DEGuL0T_.js"></script>
+    <link rel="stylesheet" crossorigin href="/blackjack/assets/index-CK-stpCD.css">
   </head>
   <body>
-    <header class="title">
-      <h1>Blackjack</h1>
-    </header>
+    <main class="table">
+      <header class="brand">
+        <p class="brand__suits" aria-hidden="true">
+          <span class="suit suit--red">♥</span>
+          <span class="suit">♠</span>
+          <span class="suit suit--red">♦</span>
+          <span class="suit">♣</span>
+        </p>
+        <h1 class="brand__title">Blackjack</h1>
+        <p class="brand__tagline">Dealer vs Player · 21</p>
+      </header>
 
-    <div class="row mt-2">
-      <div class="col text-center">
-        <button class="btn btn-danger" id="btnNewGame">New Game</button>
-        <button class="btn btn-primary" id="btnGetCard">Get Card</button>
-        <button class="btn btn-primary" id="btnStopGame">Stop Game</button>
-      </div>
-    </div>
+      <section class="scoreboard" aria-label="Scoreboard">
+        <article class="seat seat--player">
+          <h2 class="seat__name">Player 1</h2>
+          <p class="seat__score">
+            <span class="score" id="player-points">0</span>
+          </p>
+        </article>
 
-    <div class="row container mt-2">
-      <div class="col">
-        <h1>Player 1 - <small id="player-points">0</small></h1>
-        <div class="row" id="player-cards"></div>
-      </div>
-    </div>
+        <p class="scoreboard__divider" aria-hidden="true">vs</p>
 
-    <div class="row container mt-2">
-      <div class="col">
-        <h1>Computer - <small id="computer-points">0</small></h1>
-        <div class="row" id="computer-cards"></div>
+        <article class="seat seat--computer">
+          <h2 class="seat__name">Computer</h2>
+          <p class="seat__score">
+            <span class="score" id="computer-points">0</span>
+          </p>
+        </article>
+      </section>
+
+      <section class="board" aria-label="Card table">
+        <div class="hand hand--computer">
+          <h2 class="hand__label">Computer hand</h2>
+          <div class="hand__cards" id="computer-cards"></div>
+        </div>
+
+        <div class="hand hand--player">
+          <h2 class="hand__label">Your hand</h2>
+          <div class="hand__cards" id="player-cards"></div>
+        </div>
+      </section>
+
+      <div class="controls">
+        <button class="btn btn--ghost" id="btnNewGame" type="button">
+          New Game
+        </button>
+        <button class="btn btn--primary" id="btnGetCard" type="button">
+          Get Card
+        </button>
+        <button class="btn btn--danger" id="btnStopGame" type="button">
+          Stop Game
+        </button>
       </div>
-    </div>
+
+      <div class="result" id="result" role="status" aria-live="polite"></div>
+    </main>
 
   </body>
 </html>

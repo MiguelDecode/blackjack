@@ -1,6 +1,7 @@
 import { getCard, drawCard, cardValue } from "./card-cases";
 import { computerTurn } from "./computer-turn";
 import { createShuffledDeck } from "./create-deck";
+import { clearResult, updateScore } from "./ui";
 
 /**
  * @typedef {Object} GameState
@@ -29,10 +30,11 @@ import { createShuffledDeck } from "./create-deck";
 export const handleNewGame = (elements) => {
   elements.playerCards.innerHTML = "";
   elements.computerCards.innerHTML = "";
-  elements.playerPoints.innerText = 0;
-  elements.computerPoints.innerText = 0;
+  updateScore(elements.playerPoints, 0);
+  updateScore(elements.computerPoints, 0);
   elements.stopGameBtn.disabled = false;
   elements.getCardBtn.disabled = false;
+  clearResult(elements);
 
   return { deck: createShuffledDeck(), playerPoints: 0, computerPoints: 0 };
 };
@@ -50,7 +52,7 @@ export const handleNewGame = (elements) => {
 export const handleGetCard = (deck, playerPoints, computerPoints, elements) => {
   const card = getCard(deck);
   playerPoints = playerPoints + cardValue(card);
-  elements.playerPoints.innerText = playerPoints;
+  updateScore(elements.playerPoints, playerPoints);
   drawCard(card, 0, elements);
 
   if (playerPoints >= 21) {

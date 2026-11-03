@@ -12,6 +12,32 @@ export const getCard = (deck) => {
   return deck.pop();
 };
 
+const SUIT_NAMES = Object.freeze({
+  C: "clubs",
+  D: "diamonds",
+  H: "hearts",
+  S: "spades",
+});
+
+const RANK_NAMES = Object.freeze({
+  A: "Ace",
+  J: "Jack",
+  Q: "Queen",
+  K: "King",
+});
+
+/**
+ * Builds a human-readable card name.
+ *
+ * @param {string} card - Card identifier, e.g. "2C" or "AS".
+ * @returns {string} A name such as "Ace of spades" or "10 of hearts".
+ */
+const cardName = (card) => {
+  const suit = SUIT_NAMES[card.slice(-1)] ?? "unknown suit";
+  const rank = card.slice(0, -1);
+  return `${RANK_NAMES[rank] ?? rank} of ${suit}`;
+};
+
 /**
  * Renders a card image inside the given player's card area.
  *
@@ -22,7 +48,7 @@ export const getCard = (deck) => {
  */
 export const drawCard = (card, player, elements) => {
   const cardImage = document.createElement("img");
-  cardImage.alt = "A poker card image";
+  cardImage.alt = cardName(card);
   cardImage.src = `${import.meta.env.BASE_URL}assets/cards/${card}.png`;
   cardImage.classList.add("card");
 

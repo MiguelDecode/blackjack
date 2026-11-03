@@ -21,6 +21,7 @@ const game = (() => {
     computerPoints: document.getElementById("computer-points"),
     playerCards: document.getElementById("player-cards"),
     computerCards: document.getElementById("computer-cards"),
+    result: document.getElementById("result"),
   };
 
   // EventListener

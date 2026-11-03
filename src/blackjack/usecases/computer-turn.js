@@ -1,10 +1,11 @@
 import { getCard, drawCard, cardValue } from "./card-cases";
+import { showResult, updateScore } from "./ui";
 
 export const computerTurn = (minimalPoints, computerPoints, deck, elements) => {
   do {
     const card = getCard(deck);
     computerPoints = computerPoints + cardValue(card);
-    elements.computerPoints.innerText = computerPoints;
+    updateScore(elements.computerPoints, computerPoints);
     drawCard(card, 1, elements);
 
     if (minimalPoints > 21) {
@@ -14,13 +15,13 @@ export const computerTurn = (minimalPoints, computerPoints, deck, elements) => {
 
   setTimeout(() => {
     if (computerPoints === minimalPoints) {
-      alert("Draw");
+      showResult(elements, "Draw", "draw");
     } else if (computerPoints > 21) {
-      alert("Player wins");
+      showResult(elements, "Player wins", "win");
     } else {
-      alert("Computer wins");
+      showResult(elements, "Computer wins", "lose");
     }
-  }, 50);
+  }, 500);
 
   return computerPoints;
 };
