@@ -23,7 +23,7 @@ export const getCard = (deck) => {
 export const drawCard = (card, player, elements) => {
   const cardImage = document.createElement("img");
   cardImage.alt = "A poker card image";
-  cardImage.src = `public/assets/cards/${card}.png`;
+  cardImage.src = `${import.meta.env.BASE_URL}assets/cards/${card}.png`;
   cardImage.classList.add("card");
 
   if (player === 0) {
